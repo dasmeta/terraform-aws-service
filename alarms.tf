@@ -37,7 +37,7 @@ module "cw_alerts" {
     },
     // CPU
     {
-      name   = "${var.name} have have cpu problem in ${var.cluster_name}",
+      name   = "${var.name} has cpu problem in ${var.cluster_name}",
       source = "ContainerInsights/pod_cpu_utilization",
       filters = {
         PodName     = var.name,
@@ -51,7 +51,7 @@ module "cw_alerts" {
     },
     // MEMORY
     {
-      name   = "${var.name} have memory problem in ${var.cluster_name}",
+      name   = "${var.name} has memory problem in ${var.cluster_name}",
       source = "ContainerInsights/pod_memory_utilization",
       filters = {
         PodName     = var.name,

@@ -69,4 +69,3 @@ module "cw_alerts" {
     helm_release.service
   ]
 }
-

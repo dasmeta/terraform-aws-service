@@ -29,9 +29,10 @@ No requirements.
 |------|-------------|------|---------|:--------:|
 | <a name="input_alarms"></a> [alarms](#input\_alarms) | Alarms enabled by default you need set sns topic name for send alarms for customize alarms threshold use custom\_values | <pre>object({<br>    enabled       = optional(bool, true)<br>    sns_topic     = string<br>    custom_values = optional(any, {})<br>  })</pre> | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Cluster name | `string` | n/a | yes |
-| <a name="input_helm_values"></a> [helm\_values](#input\_helm\_values) | Values which is overwrite chart defaults | `any` | n/a | yes |
+| <a name="input_deploy_service"></a> [deploy\_service](#input\_deploy\_service) | Wether to deploy the service via helm or not. | `bool` | `true` | no |
+| <a name="input_helm_values"></a> [helm\_values](#input\_helm\_values) | Values which is overwrite chart defaults | `any` | `null` | no |
 | <a name="input_name"></a> [name](#input\_name) | Service names | `string` | n/a | yes |
-| <a name="input_namespace"></a> [namespace](#input\_namespace) | Namespace | `string` | n/a | yes |
+| <a name="input_namespace"></a> [namespace](#input\_namespace) | Namespace | `string` | `null` | no |
 
 ## Outputs
 

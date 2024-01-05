@@ -6,6 +6,7 @@ variable "name" {
 variable "namespace" {
   type        = string
   description = "Namespace"
+  default     = null
 }
 
 variable "cluster_name" {
@@ -16,6 +17,7 @@ variable "cluster_name" {
 variable "helm_values" {
   type        = any
   description = "Values which is overwrite chart defaults"
+  default     = null
 }
 
 variable "alarms" {
@@ -25,4 +27,10 @@ variable "alarms" {
     custom_values = optional(any, {})
   })
   description = "Alarms enabled by default you need set sns topic name for send alarms for customize alarms threshold use custom_values"
+}
+
+variable "deploy_service" {
+  type        = bool
+  description = "Wether to deploy the service via helm or not."
+  default     = true
 }

@@ -47,7 +47,7 @@ variable "alarms" {
     })
     maximum_replicas_usage = optional(object({
       enabled          = optional(bool, true)
-      maximum_replicas = number
+      maximum_replicas = optional(number)
       }), {
       enabled          = true
       maximum_replicas = 3 //The count of HPA maximum for a service. It will be used as a threshold for HPA maximum alarm.

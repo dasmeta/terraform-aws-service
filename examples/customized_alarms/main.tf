@@ -23,16 +23,16 @@ module "this" {
   alarms = {
     sns_topic = "Default"
     custom_values = {
-      cpu = {
+      network_in = {
         period    = 300,
         statistic = "avg",
-        threshold = 80
+        threshold = 80000
         equation  = "gte"
       },
-      memory = {
+      network_out = {
         period    = 300,
         statistic = "avg",
-        threshold = 80
+        threshold = 80000
         equation  = "gte"
       },
       restarts = {
@@ -46,6 +46,12 @@ module "this" {
         statistic = "avg",
         threshold = 0
         equation  = "lte"
+      },
+      maximum_replicas_usage = {
+        period    = 300,
+        statistic = "avg",
+        threshold = 6
+        equation  = "gte"
       },
     }
   }

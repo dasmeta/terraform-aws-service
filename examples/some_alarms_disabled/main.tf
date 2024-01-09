@@ -9,5 +9,11 @@ module "this" {
 
   alarms = {
     sns_topic = "default"
+    restarts = {
+      enabled = false
+    }
+    network_out = {
+      enabled = false
+    }
   }
 }

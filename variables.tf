@@ -1,6 +1,6 @@
 variable "name" {
   type        = string
-  description = "Service names"
+  description = "Service name. It's used as a helm release name and specified PodName in AWS CloudWatch metrics for which alarms will be created."
 }
 
 variable "namespace" {
@@ -16,7 +16,7 @@ variable "cluster_name" {
 
 variable "helm_values" {
   type        = any
-  description = "Values which is overwrite chart defaults"
+  description = "Values which overwrite chart defaults"
   default     = null
 }
 
@@ -25,9 +25,38 @@ variable "alarms" {
     enabled       = optional(bool, true)
     sns_topic     = string
     custom_values = optional(any, {})
+    restarts = optional(object({
+      enabled = bool
+      }), {
+      enabled = true
+    })
+    replicas = optional(object({
+      enabled = bool
+      }), {
+      enabled = true
+    })
+    network_in = optional(object({
+      enabled = bool
+      }), {
+      enabled = true
+    })
+    network_out = optional(object({
+      enabled = bool
+      }), {
+      enabled = true
+    })
+    maximum_replicas_usage = optional(object({
+      enabled          = optional(bool, true)
+      maximum_replicas = number
+      }), {
+      enabled          = true
+      maximum_replicas = 3 //The count of HPA maximum for a service. It will be used as a threshold for HPA maximum alarm.
+    })
+
   })
-  description = "Alarms enabled by default you need set sns topic name for send alarms for customize alarms threshold use custom_values"
+  description = "Alarms are enabled by default. You need to set SNS topic name to send alarms. Use custom_values to customize alarms."
 }
+
 
 variable "deploy_service" {
   type        = bool

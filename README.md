@@ -1,7 +1,6 @@
 # service
 
 ## What
-
 This module
 - deploys services by using `helm_release` tf resource:
   - it is conditional: set `deploy_service` to false if you don't want to deploy a service,

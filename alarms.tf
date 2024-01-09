@@ -24,7 +24,7 @@ module "cw_alerts" {
     // Replicas
     {
       name   = "${var.name} has 0 available replicas in ${var.cluster_name}"
-      source = "ContainerInsights/kube_deployment_spec_replicas"
+      source = "ContainerInsights/service_number_of_running_pods"
       filters = {
         ClusterName = var.cluster_name,
         Deployment  = var.name,
@@ -38,7 +38,7 @@ module "cw_alerts" {
     // CPU
     {
       name   = "${var.name} has cpu problem in ${var.cluster_name}",
-      source = "ContainerInsights/pod_cpu_utilization",
+      source = "ContainerInsights/pod_cpu_usage_total",
       filters = {
         PodName     = var.name,
         ClusterName = var.cluster_name,
@@ -52,7 +52,7 @@ module "cw_alerts" {
     // MEMORY
     {
       name   = "${var.name} has memory problem in ${var.cluster_name}",
-      source = "ContainerInsights/pod_memory_utilization",
+      source = "ContainerInsights/pod_memory_working_set",
       filters = {
         PodName     = var.name,
         ClusterName = var.cluster_name,

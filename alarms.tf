@@ -51,7 +51,6 @@ module "cw_alerts" {
         },
         period            = try(var.alarms.custom_values.network_in.period, 300),
         statistic         = try(var.alarms.custom_values.network_in.statistic, "avg"),
-        threshold         = try(var.alarms.custom_values.network_in.threshold, 350000)
         equation          = try(var.alarms.custom_values.network_in.equation, "ltlgtu")
         anomaly_detection = true
       },
@@ -68,7 +67,6 @@ module "cw_alerts" {
         },
         period            = try(var.alarms.custom_values.network_out.period, 300),
         statistic         = try(var.alarms.custom_values.network_out.statistic, "avg"),
-        threshold         = try(var.alarms.custom_values.network_out.threshold, 90)
         equation          = try(var.alarms.custom_values.network_out.equation, "ltlgtu")
         anomaly_detection = true
       },

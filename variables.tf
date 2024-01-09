@@ -46,7 +46,7 @@ variable "alarms" {
       enabled = true
     })
     maximum_replicas_usage = optional(object({
-      enabled          = bool
+      enabled          = optional(bool, true)
       maximum_replicas = number
       }), {
       enabled          = true

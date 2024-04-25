@@ -10,7 +10,7 @@ module "cw_alerts" {
     // Restarts
     var.alarms.restarts.enabled ? [
       {
-        name   = "${var.name} has too many restarts in ${var.cluster_name}"
+        name   = "Service: High Restart Rate for ${var.name} (2 in 5 minutes) in Cluster ${var.cluster_name}"
         source = "ContainerInsights/pod_number_of_container_restarts"
         filters = {
           ClusterName = var.cluster_name,
@@ -26,7 +26,7 @@ module "cw_alerts" {
     // Replicas
     var.alarms.replicas.enabled ? [
       {
-        name   = "${var.name} has 0 available replicas in ${var.cluster_name}"
+        name   = "Service: 0 available replicas for ${var.name} in Cluster ${var.cluster_name}"
         source = "ContainerInsights/service_number_of_running_pods"
         filters = {
           ClusterName = var.cluster_name,
@@ -42,7 +42,7 @@ module "cw_alerts" {
     // Network In
     var.alarms.network_in.enabled ? [
       {
-        name   = "${var.name} is outside of Network < In band in ${var.cluster_name}",
+        name   = "Service: Network In Traffic Anomaly for ${var.name} in Cluster ${var.cluster_name}",
         source = "ContainerInsights/pod_network_rx_bytes",
         filters = {
           ClusterName = var.cluster_name,
@@ -58,7 +58,7 @@ module "cw_alerts" {
     // Network Out
     var.alarms.network_out.enabled ? [
       {
-        name   = "${var.name} is outside of Network > Out band ${var.cluster_name}",
+        name   = "Service: Network Out Traffic Anomaly for ${var.name} in Cluster ${var.cluster_name}",
         source = "ContainerInsights/pod_network_tx_bytes",
         filters = {
           ClusterName = var.cluster_name,
@@ -74,7 +74,7 @@ module "cw_alerts" {
     // HPA Maximum
     var.alarms.maximum_replicas_usage.enabled ? [
       {
-        name   = "${var.name} has been on HPA maximum for 5 minutes in ${var.cluster_name}",
+        name   = "Service: ${var.name} HPA has been on Maximum Replicas for 5 minutes in Cluster ${var.cluster_name}",
         source = "ContainerInsights/kube_deployment_status_replicas_available",
         filters = {
           ClusterName = var.cluster_name,

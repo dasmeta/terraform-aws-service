@@ -9,6 +9,12 @@ variable "namespace" {
   default     = null
 }
 
+variable "create_namespace" {
+  type        = bool
+  description = "Create namespace"
+  default     = false
+}
+
 variable "cluster_name" {
   type        = string
   description = "Cluster name"

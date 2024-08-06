@@ -67,6 +67,7 @@ No requirements.
 | <a name="input_chart"></a> [chart](#input\_chart) | n/a | `string` | `"base"` | no |
 | <a name="input_chart_version"></a> [chart\_version](#input\_chart\_version) | n/a | `string` | `null` | no |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Cluster name | `string` | n/a | yes |
+| <a name="input_create_namespace"></a> [create\_namespace](#input\_create\_namespace) | Create namespace | `bool` | `false` | no |
 | <a name="input_deploy_service"></a> [deploy\_service](#input\_deploy\_service) | Wether to deploy the service via helm or not. | `bool` | `true` | no |
 | <a name="input_helm_values"></a> [helm\_values](#input\_helm\_values) | Values which overwrite chart defaults | `any` | `null` | no |
 | <a name="input_name"></a> [name](#input\_name) | Service name. It's used as a helm release name and specified PodName in AWS CloudWatch metrics for which alarms will be created. | `string` | n/a | yes |

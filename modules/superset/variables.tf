@@ -8,6 +8,12 @@ variable "namespace" {
   default = "superset"
 }
 
+variable "create_namespace" {
+  type        = bool
+  description = "Create namespace"
+  default     = false
+}
+
 variable "cluster_name" {
   type    = string
   default = "superset"

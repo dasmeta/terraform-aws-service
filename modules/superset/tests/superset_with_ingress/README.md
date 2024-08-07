@@ -1,4 +1,4 @@
-# basic
+# superset_with_external_redis_and_postgress
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -13,7 +13,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_this"></a> [this](#module\_this) | ../../ | n/a |
+| <a name="module_test"></a> [test](#module\_test) | ../../ | n/a |
 
 ## Resources
 

@@ -24,7 +24,3 @@ module "this" {
     sns_topic = "Default"
   }
 }
-
-output "test" {
-  value = module.this.test
-}

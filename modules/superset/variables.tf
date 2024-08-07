@@ -88,7 +88,6 @@ variable "ingress_config" {
     pathType      = optional(string, "ImplementationSpecific")
     group_name    = optional(string, "default")
     success-codes = optional(string, "200-399")
-    # listen-ports   = optional(string, "'[{\"HTTPS\":443}]'")
-    class = optional(string, "alb")
+    class         = optional(string, "alb")
   })
 }

@@ -20,6 +20,15 @@ locals {
         "redis_port" : var.redis_config.port
       }
     }
+
+    "service" : {
+      "nodePort" : {
+        "http" : 31000
+      }
+      "port" : 8088
+      "type" : "NodePort"
+    }
+
     "ingress" : {
       "enabled" : var.ingress_config.create
       "hosts" : var.ingress_config.hosts
@@ -28,7 +37,6 @@ locals {
       "annotations" : {
         "alb.ingress.kubernetes.io/group.name" : var.ingress_config.group_name
         "alb.ingress.kubernetes.io/success-codes" : var.ingress_config.success-codes
-        # "alb.ingress.kubernetes.io/listen-ports": var.ingress_config.listen-ports
         "kubernetes.io/ingress.class" : var.ingress_config.class
       }
     }

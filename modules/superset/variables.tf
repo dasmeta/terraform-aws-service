@@ -79,3 +79,16 @@ variable "postgress_config" {
     pass   = optional(string, "superset")
   })
 }
+
+variable "ingress_config" {
+  type = object({
+    create        = bool
+    hosts         = optional(list(string), [])
+    path          = optional(string, "/*")
+    pathType      = optional(string, "ImplementationSpecific")
+    group_name    = optional(string, "default")
+    success-codes = optional(string, "200-399")
+    # listen-ports   = optional(string, "'[{\"HTTPS\":443}]'")
+    class = optional(string, "alb")
+  })
+}

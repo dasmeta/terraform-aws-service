@@ -8,7 +8,9 @@ resource "helm_release" "service" {
   create_namespace = var.create_namespace
   version          = var.chart_version
 
-  values = [
-    yamlencode(var.helm_values)
-  ]
+  values = var.helm_values
+  # [
+  #   var.helm_values
+  #   # yamlencode(var.helm_values)
+  # ]
 }

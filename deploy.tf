@@ -1,3 +1,11 @@
+# locals {
+#   encoded_helm_values = type(var.helm_values) == "object({})" ? var.helm_values : yamlencode(var.helm_values)
+# }
+
+output "test" {
+  value = type({})
+}
+
 resource "helm_release" "service" {
   count = var.deploy_service ? 1 : 0
 
@@ -9,7 +17,8 @@ resource "helm_release" "service" {
   version          = var.chart_version
 
   values = [
-    var.helm_values
+    local.encoded_helm_values
+    # var.helm_values
     # yamlencode(var.helm_values)
   ]
 }

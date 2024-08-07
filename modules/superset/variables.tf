@@ -89,6 +89,6 @@ variable "ingress_config" {
     group_name      = optional(string, "default")
     success-codes   = optional(string, "200-399")
     class           = optional(string, "alb")
-    certificate_arn = optional("string", "")
+    certificate_arn = optional(string, "")
   })
 }

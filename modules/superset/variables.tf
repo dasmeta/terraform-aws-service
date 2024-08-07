@@ -64,18 +64,18 @@ variable "alarms" {
 variable "redis_config" {
   type = object({
     create = bool
-    host   = optional(string, null)
-    port   = optional(number, )
+    host   = optional(string, "superset-redis-headless")
+    port   = optional(number, 6379)
   })
 }
 
 variable "postgress_config" {
   type = object({
     create = bool
-    name   = optional(string, "superset-db")
-    host   = optional(string, null)
+    name   = optional(string, "superset")
+    host   = optional(string, "superset-postgresql")
     port   = optional(number, 5432)
-    user   = optional(string, null)
-    pass   = optional(string, null)
+    user   = optional(string, "superset")
+    pass   = optional(string, "superset")
   })
 }

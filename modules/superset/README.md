@@ -28,8 +28,8 @@ No resources.
 | <a name="input_create_namespace"></a> [create\_namespace](#input\_create\_namespace) | Create namespace | `bool` | `false` | no |
 | <a name="input_name"></a> [name](#input\_name) | n/a | `string` | `"superset"` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | n/a | `string` | `"superset"` | no |
-| <a name="input_postgress_config"></a> [postgress\_config](#input\_postgress\_config) | n/a | <pre>object({<br>    create = bool<br>    name   = optional(string, "superset-db")<br>    host   = optional(string, null)<br>    port   = optional(number, 5432)<br>    user   = optional(string, null)<br>    pass   = optional(string, null)<br>  })</pre> | n/a | yes |
-| <a name="input_redis_config"></a> [redis\_config](#input\_redis\_config) | n/a | <pre>object({<br>    create = bool<br>    host   = optional(string, null)<br>    port   = optional(number, )<br>  })</pre> | n/a | yes |
+| <a name="input_postgress_config"></a> [postgress\_config](#input\_postgress\_config) | n/a | <pre>object({<br>    create = bool<br>    name   = optional(string, "superset")<br>    host   = optional(string, "superset-postgresql")<br>    port   = optional(number, 5432)<br>    user   = optional(string, "superset")<br>    pass   = optional(string, "superset")<br>  })</pre> | n/a | yes |
+| <a name="input_redis_config"></a> [redis\_config](#input\_redis\_config) | n/a | <pre>object({<br>    create = bool<br>    host   = optional(string, "superset-redis-headless")<br>    port   = optional(number, 6379)<br>  })</pre> | n/a | yes |
 | <a name="input_supeset_secret_key"></a> [supeset\_secret\_key](#input\_supeset\_secret\_key) | Generate your own superset secret key for encryption. Use 'openssl rand -base64 42' to generate a good key | `string` | n/a | yes |
 
 ## Outputs

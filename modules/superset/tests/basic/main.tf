@@ -1,9 +1,10 @@
 module "test" {
   source = "../../"
 
-  name         = "superset"
-  namespace    = "superset"
-  cluster_name = "buycycle-cluster"
+  name               = "superset"
+  namespace          = "superset"
+  cluster_name       = "buycycle-cluster"
+  supeset_secret_key = "sdgiadgiagdiagdi"
 
   postgress_config = {
     create = true

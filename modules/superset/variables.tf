@@ -82,12 +82,13 @@ variable "postgress_config" {
 
 variable "ingress_config" {
   type = object({
-    create        = bool
-    hosts         = optional(list(string), [])
-    path          = optional(string, "/*")
-    pathType      = optional(string, "ImplementationSpecific")
-    group_name    = optional(string, "default")
-    success-codes = optional(string, "200-399")
-    class         = optional(string, "alb")
+    create          = bool
+    hosts           = optional(list(string), [])
+    path            = optional(string, "/*")
+    pathType        = optional(string, "ImplementationSpecific")
+    group_name      = optional(string, "default")
+    success-codes   = optional(string, "200-399")
+    class           = optional(string, "alb")
+    certificate_arn = optional("string", "")
   })
 }

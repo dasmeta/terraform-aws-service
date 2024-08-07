@@ -37,6 +37,8 @@ locals {
       "annotations" : {
         "alb.ingress.kubernetes.io/group.name" : var.ingress_config.group_name
         "alb.ingress.kubernetes.io/success-codes" : var.ingress_config.success-codes
+        "alb.ingress.kubernetes.io/listen-ports" : var.ingress_config.certificate_arn == "" ? "[{\"HTTP\":80}]" : "[{\"HTTPS\":443}, {\"HTTP\":80}]"
+        "alb.ingress.kubernetes.io/certificate-arn" : var.ingress_config.certificate_arn
         "kubernetes.io/ingress.class" : var.ingress_config.class
       }
     }

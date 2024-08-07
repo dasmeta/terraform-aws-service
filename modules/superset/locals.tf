@@ -6,6 +6,9 @@ locals {
     "redis" : {
       "enabled" : var.redis_config.create,
     },
+    "extraSecretEnv" : {
+      "SUPERSET_SECRET_KEY" : var.supeset_secret_key
+    }
     "supersetNode" : {
       "connections" : {
         "db_host" : "${var.name}-postgresql"
@@ -26,6 +29,9 @@ locals {
     "redis" : {
       "enabled" : var.redis_config.create,
     },
+    "extraSecretEnv" : {
+      "SUPERSET_SECRET_KEY" : var.supeset_secret_key
+    }
     "supersetNode" : {
       "connections" : {
         "db_host" : var.postgress_config.host
@@ -46,6 +52,9 @@ locals {
     "redis" : {
       "enabled" : var.redis_config.create,
     },
+    "extraSecretEnv" : {
+      "SUPERSET_SECRET_KEY" : var.supeset_secret_key
+    }
     "supersetNode" : {
       "connections" : {
         "db_host" : var.postgress_config.host
@@ -66,6 +75,9 @@ locals {
     "redis" : {
       "enabled" : "true",
     },
+    "extraSecretEnv" : {
+      "SUPERSET_SECRET_KEY" : var.supeset_secret_key
+    }
     "supersetNode" : {
       "connections" : {
         "db_host" : "${var.name}-postgresql"

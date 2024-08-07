@@ -19,6 +19,11 @@ variable "cluster_name" {
   default = "superset"
 }
 
+variable "supeset_secret_key" {
+  type        = string
+  description = "Generate your own superset secret key for encryption. Use 'openssl rand -base64 42' to generate a good key"
+}
+
 variable "alarms" {
   type = object({
     enabled       = optional(bool, true)

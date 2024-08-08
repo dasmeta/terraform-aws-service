@@ -64,11 +64,15 @@ No requirements.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_alarms"></a> [alarms](#input\_alarms) | Alarms are enabled by default. You need to set SNS topic name to send alarms. Use custom\_values to customize alarms. | <pre>object({<br>    enabled       = optional(bool, true)<br>    sns_topic     = string<br>    custom_values = optional(any, {})<br>    restarts = optional(object({<br>      enabled = bool<br>      }), {<br>      enabled = true<br>    })<br>    replicas = optional(object({<br>      enabled = bool<br>      }), {<br>      enabled = true<br>    })<br>    network_in = optional(object({<br>      enabled = bool<br>      }), {<br>      enabled = true<br>    })<br>    network_out = optional(object({<br>      enabled = bool<br>      }), {<br>      enabled = true<br>    })<br>    maximum_replicas_usage = optional(object({<br>      enabled          = optional(bool, true)<br>      maximum_replicas = optional(number)<br>      }), {<br>      enabled          = true<br>      maximum_replicas = 3 //The count of HPA maximum for a service. It will be used as a threshold for HPA maximum alarm.<br>    })<br><br>  })</pre> | n/a | yes |
+| <a name="input_chart"></a> [chart](#input\_chart) | n/a | `string` | `"base"` | no |
+| <a name="input_chart_version"></a> [chart\_version](#input\_chart\_version) | n/a | `string` | `null` | no |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Cluster name | `string` | n/a | yes |
+| <a name="input_create_namespace"></a> [create\_namespace](#input\_create\_namespace) | Create namespace | `bool` | `false` | no |
 | <a name="input_deploy_service"></a> [deploy\_service](#input\_deploy\_service) | Wether to deploy the service via helm or not. | `bool` | `true` | no |
 | <a name="input_helm_values"></a> [helm\_values](#input\_helm\_values) | Values which overwrite chart defaults | `any` | `null` | no |
 | <a name="input_name"></a> [name](#input\_name) | Service name. It's used as a helm release name and specified PodName in AWS CloudWatch metrics for which alarms will be created. | `string` | n/a | yes |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | Namespace | `string` | `null` | no |
+| <a name="input_repository"></a> [repository](#input\_repository) | n/a | `string` | `"https://dasmeta.github.io/helm/"` | no |
 
 ## Outputs
 

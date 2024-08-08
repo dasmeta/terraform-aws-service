@@ -1,12 +1,11 @@
 variable "name" {
-  type        = string
-  description = "Service name. It's used as a helm release name and specified PodName in AWS CloudWatch metrics for which alarms will be created."
+  type    = string
+  default = "superset"
 }
 
 variable "namespace" {
-  type        = string
-  description = "Namespace"
-  default     = null
+  type    = string
+  default = "superset"
 }
 
 variable "create_namespace" {
@@ -16,29 +15,13 @@ variable "create_namespace" {
 }
 
 variable "cluster_name" {
+  type    = string
+  default = "superset"
+}
+
+variable "supeset_secret_key" {
   type        = string
-  description = "Cluster name"
-}
-
-variable "helm_values" {
-  type        = any
-  description = "Values which overwrite chart defaults"
-  default     = null
-}
-
-variable "repository" {
-  type    = string
-  default = "https://dasmeta.github.io/helm/"
-}
-
-variable "chart" {
-  type    = string
-  default = "base"
-}
-
-variable "chart_version" {
-  type    = string
-  default = null
+  description = "Generate your own superset secret key for encryption. Use 'openssl rand -base64 42' to generate a good key"
 }
 
 variable "alarms" {
@@ -78,8 +61,34 @@ variable "alarms" {
   description = "Alarms are enabled by default. You need to set SNS topic name to send alarms. Use custom_values to customize alarms."
 }
 
-variable "deploy_service" {
-  type        = bool
-  description = "Wether to deploy the service via helm or not."
-  default     = true
+variable "redis_config" {
+  type = object({
+    create = bool
+    host   = optional(string, "superset-redis-headless")
+    port   = optional(number, 6379)
+  })
+}
+
+variable "postgress_config" {
+  type = object({
+    create = bool
+    name   = optional(string, "superset")
+    host   = optional(string, "superset-postgresql")
+    port   = optional(number, 5432)
+    user   = optional(string, "superset")
+    pass   = optional(string, "superset")
+  })
+}
+
+variable "ingress_config" {
+  type = object({
+    create          = bool
+    hosts           = optional(list(string), [])
+    path            = optional(string, "/*")
+    pathType        = optional(string, "ImplementationSpecific")
+    group_name      = optional(string, "default")
+    success-codes   = optional(string, "200-399")
+    class           = optional(string, "alb")
+    certificate_arn = optional(string, "")
+  })
 }

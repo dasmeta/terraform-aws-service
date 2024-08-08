@@ -3,7 +3,7 @@ module "test" {
 
   name               = "superset"
   namespace          = "superset"
-  cluster_name       = "buycycle-cluster"
+  cluster_name       = "dasmeta-eks-dev"
   supeset_secret_key = "sdgiadgiagdiagdi"
 
   postgress_config = {
